@@ -1,0 +1,22 @@
+.sidebar,
+.off-canvas-sidebar{
+
+    &.folded{
+        left: -260px; 
+    }
+
+    &[data-color="darkblue"]{
+        @include sidebar-color($darkblue-color);
+    }
+
+    @include transition (0.50s, cubic-bezier(0.685, 0.0473, 0.346, 1));
+}
+
+.main-panel{
+    &.expanded{
+        width: 100%;
+    }
+    width: 100%;
+
+    @include transition (0.50s, cubic-bezier(0.685, 0.0473, 0.346, 1));
+}

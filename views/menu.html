@@ -32,7 +32,7 @@ The above copyright notice and this permission notice shall be included in all c
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <!-- CSS Files -->
   <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="../assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
+  <link href="../assets/css/alms.css?v=2.0.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
@@ -58,22 +58,10 @@ The above copyright notice and this permission notice shall be included in all c
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li>
+          <li class="active ">
             <a href="./dashboard.html">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
-            </a>
-          </li>
-          <li>
-            <a href="./icons.html">
-              <i class="nc-icon nc-diamond"></i>
-              <p>Icons</p>
-            </a>
-          </li>
-          <li>
-            <a href="./map.html">
-              <i class="nc-icon nc-pin-3"></i>
-              <p>Maps</p>
             </a>
           </li>
           <li>
@@ -100,7 +88,7 @@ The above copyright notice and this permission notice shall be included in all c
               <p>Typography</p>
             </a>
           </li>
-          <li class="active  active-pro " class="active-pro">
+          <li class="active-pro">
             <a href="./upgrade.html">
               <i class="nc-icon nc-spaceship"></i>
               <p>Upgrade to PRO</p>
@@ -134,23 +122,15 @@ The above copyright notice and this permission notice shall be included in all c
                 <input type="text" value="" class="form-control" placeholder="Search...">
                 <div class="input-group-append">
                   <div class="input-group-text">
-                    <i class="nc-icon nc-zoom-split"></i>
+                    <i class="fa fa-search"></i>
                   </div>
                 </div>
               </div>
             </form>
             <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link btn-magnify" href="#pablo">
-                  <i class="nc-icon nc-layout-11"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Stats</span>
-                  </p>
-                </a>
-              </li>
               <li class="nav-item btn-rotate dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="nc-icon nc-bell-55"></i>
+                  <i class="fa fa-bell"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Some Actions</span>
                   </p>
@@ -163,7 +143,7 @@ The above copyright notice and this permission notice shall be included in all c
               </li>
               <li class="nav-item">
                 <a class="nav-link btn-rotate" href="#pablo">
-                  <i class="nc-icon nc-settings-gear-65"></i>
+                  <i class="fa fa-cog"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Account</span>
                   </p>
@@ -174,84 +154,12 @@ The above copyright notice and this permission notice shall be included in all c
         </div>
       </nav>
       <!-- End Navbar -->
-      <!-- <div class="panel-header panel-header-sm">
+      <!-- <div class="panel-header panel-header-lg">
+
+  <canvas id="bigDashboardChart"></canvas>
 
 
 </div> -->
-      <div class="content">
-        <div class="row">
-          <div class="col-md-8 ml-auto mr-auto">
-            <div class="card card-upgrade">
-              <div class="card-header text-center">
-                <h4 class="card-title">Paper Dashboard PRO</h3>
-                  <p class="card-category">Are you looking for more components? Please check our Premium Version of Paper Dashboard PRO.</p>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive table-upgrade">
-                  <table class="table">
-                    <thead>
-                      <th></th>
-                      <th class="text-center">Free</th>
-                      <th class="text-center">PRO</th>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Components</td>
-                        <td class="text-center">16</td>
-                        <td class="text-center">160</td>
-                      </tr>
-                      <tr>
-                        <td>Plugins</td>
-                        <td class="text-center">4</td>
-                        <td class="text-center">13</td>
-                      </tr>
-                      <tr>
-                        <td>Example Pages</td>
-                        <td class="text-center">7</td>
-                        <td class="text-center">27</td>
-                      </tr>
-                      <tr>
-                        <td>Login, Register, Pricing, Lock Pages</td>
-                        <td class="text-center"><i class="nc-icon nc-simple-remove text-danger"></i></td>
-                        <td class="text-center"><i class="nc-icon nc-check-2 text-success"></i></td>
-                      </tr>
-                      <tr>
-                        <td>DataTables, VectorMap, SweetAlert, Wizard, jQueryValidation, FullCalendar etc...</td>
-                        <td class="text-center"><i class="nc-icon nc-simple-remove text-danger"></i></td>
-                        <td class="text-center"><i class="nc-icon nc-check-2 text-success"></i></td>
-                      </tr>
-                      <tr>
-                        <td>Mini Sidebar</td>
-                        <td class="text-center"><i class="nc-icon nc-simple-remove text-danger"></i></td>
-                        <td class="text-center"><i class="nc-icon nc-check-2 text-success"></i></td>
-                      </tr>
-                      <tr>
-                        <td>Premium Support</td>
-                        <td class="text-center"><i class="nc-icon nc-simple-remove text-danger"></i></td>
-                        <td class="text-center"><i class="nc-icon nc-check-2 text-success"></i></td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td class="text-center">Free</td>
-                        <td class="text-center">Just $39</td>
-                      </tr>
-                      <tr>
-                        <td class="text-center"></td>
-                        <td class="text-center">
-                          <a href="#" class="btn btn-round btn-default disabled">Current Version</a>
-                        </td>
-                        <td class="text-center">
-                          <a target="_blank" href="https://www.creative-tim.com/product/paper-dashboard-2-pro?ref=pd-free-upgrade-live" class="btn btn-round btn-primary">Upgrade to PRO</a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
           <div class="row">
@@ -286,16 +194,19 @@ The above copyright notice and this permission notice shall be included in all c
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
   <script src="../assets/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
   <script src="../assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
+  <script src="../assets/js/paper-dashboard.js?v=2.0.0" type="text/javascript"></script>
   <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
+    });
+  </script>
 </body>
 
 </html>

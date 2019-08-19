@@ -129,7 +129,6 @@ $brand-inverse:              $black-color !default;
 
 $link-disabled-color:        #666666 !default;
 $dark-color:                 #212120 !default;
-$darkblue-color:             #165769 !default;
 //     light colors
 $light-blue:                 rgba($primary-color, .2);
 $light-azure:                rgba($info-color, .2);
@@ -334,6 +333,15 @@ $topbar-x:             topbar-x !default;
 $topbar-back:          topbar-back !default;
 $bottombar-x:          bottombar-x !default;
 $bottombar-back:       bottombar-back !default;
+
+//Nucleo Icons
+
+$nc-font-path:        '../fonts' !default;
+$nc-font-size-base:   14px !default;
+$nc-css-prefix:       nc !default;
+$nc-background-color:     #eee !default;
+$nc-li-width:         (30em / 14) !default;
+$nc-padding-width:    (1em/3) !default;
 
 // Social icons color
 $social-twitter:                   #55acee !default;
