@@ -4471,25 +4471,34 @@ License - nucleoapp.com/license/
     width: 38%;
     padding: 15px; } }
 
-.sidebar,
-.off-canvas-sidebar {
-  transition: all, 0.5s, cubic-bezier(0.685, 0.0473, 0.346, 1); }
-  .sidebar.folded,
-  .off-canvas-sidebar.folded {
-    left: -260px; }
-  .sidebar[data-color="darkblue"]:after,
-  .off-canvas-sidebar[data-color="darkblue"]:after {
-    background: #165769; }
+.sidebar[data-color="darkblue"]:after,
+.off-canvas-sidebar[data-color="darkblue"]:after {
+  background: #165769; }
 
-.main-panel {
-  width: 100%;
-  -webkit-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
-  -moz-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
-  -o-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
-  -ms-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
-  transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1); }
-  .main-panel.expanded {
-    width: 100%; }
+.navbar.bg-white {
+  border-bottom: 1px solid #66615b; }
+  .navbar.bg-white .navbar-wrapper {
+    min-height: 53px; }
+
+@media (max-width: 991.98px) {
+  .sidebar .logo-image {
+    margin: 8px auto;
+    width: 80px;
+    -webkit-transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
+    -moz-transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
+    -o-transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
+    -ms-transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
+    transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1); } }
+
+@media (min-width: 992px) {
+  .sidebar .logo-image {
+    margin: 12px auto;
+    width: 112px;
+    -webkit-transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
+    -moz-transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
+    -o-transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
+    -ms-transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
+    transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1); } }
 
 .page-main {
   position: relative;
