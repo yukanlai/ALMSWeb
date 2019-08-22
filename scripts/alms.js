@@ -79,7 +79,7 @@ $(document).ready(function() {
   // });
 });
 
-$(document).on('click', '.navbar-toggle, .menu-toggle', function() {
+$(document).on('click', '.navbar-toggle', function() {
   $toggle = $(this);
 
   if (paperDashboard.misc.navbar_menu_visible == 1) {
@@ -110,6 +110,37 @@ $(document).on('click', '.navbar-toggle, .menu-toggle', function() {
   }
 });
 
+$(document).on('click', '.menu-toggle', function() {
+  $toggler = $(this);
+
+  if (paperDashboard.misc.navbar_menu_shrink == 1) {
+    $('html').removeClass('menu-shrink');
+    paperDashboard.misc.navbar_menu_shrink = 0;
+    // setTimeout(function() {
+    //   $toggle.removeClass('toggled');
+    //   $('#bodyClick').remove();
+    // }, 550);
+
+  } else {
+    // setTimeout(function() {
+    //   $toggle.addClass('toggled');
+    // }, 580);
+
+    // div = '<div id="bodyClick"></div>';
+    // $(div).appendTo('body').click(function() {
+    //   $('html').removeClass('nav-open');
+    //   paperDashboard.misc.navbar_menu_visible = 0;
+    //   setTimeout(function() {
+    //     $toggle.removeClass('toggled');
+    //     $('#bodyClick').remove();
+    //   }, 550);
+    // });
+
+    $('html').addClass('menu-shrink');
+    paperDashboard.misc.navbar_menu_shrink = 1;
+  }
+});
+
 $(window).resize(function() {
   // reset the seq for charts drawing animations
   seq = seq2 = 0;
@@ -127,7 +158,8 @@ $(window).resize(function() {
 
 paperDashboard = {
   misc: {
-    navbar_menu_visible: 0
+    navbar_menu_visible: 0,
+    navbar_menu_shrink: 0
   },
 
   // initMinimizeSidebar: function() {

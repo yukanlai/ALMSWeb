@@ -1,8 +1,8 @@
 .sidebar,
 .off-canvas-sidebar{
-    &[data-color="darkblue"]{
-        @include sidebar-color($darkblue-color);
-    }
+  &[data-color="darkblue"]{
+      @include sidebar-color($darkblue-color);
+  }
 }
 
 .navbar{
@@ -17,11 +17,11 @@
 
 @media (max-width: 991.98px){
   .sidebar{
+    @include transition (0.50s, cubic-bezier(0.685, 0.0473, 0.346, 1));
+
     .logo-image{
       margin: 8px auto;
       width: 80px;
-
-      @include transition($slow-transition-time, $transition-bezier);
     }
   }
 
@@ -60,7 +60,7 @@
       transition-delay: .5s;
       opacity: 1;
 
-      .nav-open & {
+      .menu-shrink & {
         transition-delay: 0s;
       }
 
@@ -73,12 +73,12 @@
         transition-delay: .5s;
       }
       
-      .nav-open & .line-angle1 {
-        transform: rotate(-60deg);
+      .menu-shrink & .line-angle1 {
+        transform: rotate(-120deg);
       }
 
-      .nav-open & .line-angle2 {
-        transform: rotate(60deg);
+      .menu-shrink & .line-angle2 {
+        transform: rotate(120deg);
       }
 
       .line-angle1 {
@@ -87,7 +87,7 @@
         position: absolute;
         top: 5px;
         left: -9px;
-        transform: rotate(-120deg);
+        transform: rotate(-60deg);
       }
 
       .line-angle2 {
@@ -96,51 +96,55 @@
         position: absolute;
         top: 11px;
         left: -9px;
-        transform: rotate(120deg);
+        transform: rotate(60deg);
       }
     }
   }
 
-
-  .wrapper{
-    @include transition (0.50s, cubic-bezier(0.685, 0.0473, 0.346, 1));
-  }
-
-  .nav-open{
+  .menu-shrink{
     .main-panel{
-        right: 0;
-        @include transform-translate-x(260px);
+      width: calc(100% - 74px);
+
+      @include transition (0.50s, cubic-bezier(0.685, 0.0473, 0.346, 1));
     }
 
     .sidebar{
-        @include transform-translate-x(0px);
-    }
-
-    body{
-        position: relative;
-        overflow-x: hidden;
-    }
-  }
-
-  .sidebar,
-  .bootstrap-navbar {
-      position: fixed;
-      display: block;
-      top: 0;
-      height: 100%;
-      width: 260px;
-      right: auto;
-      left: 0;
-      z-index: 1032;
-      visibility: visible;
-      overflow-y: visible;
-      padding: 0;
+      width: 74px;
       @include transition (0.50s, cubic-bezier(0.685, 0.0473, 0.346, 1));
 
-      @include transform-translate-x(-260px);
-  }
+      .sidebar-wrapper{
+        width: 74px;
 
-  .main-panel{
-    width: 100%;
+        li.active{
+          > a:not([data-toggle="collapse"]),
+          > [data-toggle="collapse"] + div .nav li {
+            &:before{
+              content: none;
+            }
+
+            &:after{
+              content: none;
+            }
+          }
+        }
+      }
+
+      .logo-image{
+        margin: 6px 0;
+        padding-left: -2px;
+        width: 54px;
+      }
+
+      .nav{
+        a{
+          padding: 3px 3px;
+        }
+        p{
+          visibility: hidden;
+          line-height: 0;
+        }
+      }
+
+    }
   }
 }
