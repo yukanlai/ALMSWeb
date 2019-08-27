@@ -4645,3 +4645,7 @@ License - nucleoapp.com/license/
 .perfect-scrollbar-on .page-main {
   height: 100%;
   max-height: 100%; }
+
+.card-footer {
+  padding: 0 15px 15px;
+  border: 0; }
