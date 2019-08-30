@@ -40,6 +40,11 @@ seq2 = 0, delays2 = 80, durations2 = 500;
 
 $(document).ready(function() {
 
+	// redirect if not logged in
+	if(!sessionStorage.getItem('token')){
+		window.location.replace("/_sinopac_root/_ALMS/ALMSWeb/views/login.html");
+	}
+
   if ($('.full-screen-map').length == 0 && $('.bd-docs').length == 0) {
     // On click navbar-collapse the menu will be white not transparent
     $('.collapse').on('show.bs.collapse', function() {
@@ -68,7 +73,7 @@ $(document).ready(function() {
 $(document).on('click', '.navbar-toggle', function() {
   $toggle = $(this);
 
-  if (alms.misc.navbar_menu_visible == 1) {
+  if ($.alms.misc.navbar_menu_visible == 1) {
     $('html').removeClass('nav-open');
     $.alms.misc.navbar_menu_visible = 0;
     setTimeout(function() {
@@ -121,6 +126,7 @@ $(window).resize(function() {
   }
 });
 
+
 $.alms = {
   misc: {
     navbar_menu_visible: 0,
@@ -134,7 +140,7 @@ $.alms = {
 		}
 
 		var options = {
-			baseZ: 1040,
+			baseZ: 1080,
 			overlayCss: {
 				backgroundColor: '#b6b6b6',
 				opacity: .6
@@ -192,6 +198,7 @@ $.alms.popup = {
       x: 20,
       y: 500
 		},
+		z_index: 1101,
     animate: {
       enter: 'animated zoomIn',
       exit: 'animated fadeOut'

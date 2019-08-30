@@ -23,8 +23,9 @@ account = {
                     $.alms.block();
                 },
                 success: function(data, status, xhr){
-                    // redirect
                     console.log("apiData:", data, status, xhr);
+                    sessionStorage.setItem('token', data.Data.token);
+                    window.location.replace("/_sinopac_root/_ALMS/ALMSWeb/views/menu.html");
                 },
                 error: function(jqXhr, textStatus, errorMessage){
                     console.log("apiFail:", jqXhr, textStatus, errorMessage);
@@ -33,8 +34,7 @@ account = {
                     $.alms.unblock();
                 }
             });
-        }
-        catch(err){
+        }catch(err){
             $.alms.unblock();
             console.log("apiErr:", err);
         }

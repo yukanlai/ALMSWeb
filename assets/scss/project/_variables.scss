@@ -1,1 +1,7 @@
 $darkblue-color:             #165769 !default;
+
+$logo-default:               #48b6b9 !default;
+$logo-blue:                  #26a6bd !default;
+$logo-green:                 #139187 !default;
+$logo-light-color:           lighten($logo-default, 10%) !default;
+$logo-dark-color:            darken($logo-default, 10%) !default;
