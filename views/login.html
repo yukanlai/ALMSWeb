@@ -88,55 +88,58 @@
 
   <script>
     $(document).ready(function(){
-      $.alms.popup.warn("ttttttttttt");
-      $.alms.popup.primary("ttttttttttt");
-      $.alms.popup.error("ttttttttttt");
-      $.alms.popup.success("ttttttttttt");
-      $.alms.popup.info("ttttttttttt");
-      
-      // $.alms.popup.primary("testingtttttttttttttttttttttttttttttt tttttttttttttttttt ttttttttttttttt tttttttttttttttttt ttttttttttttttttttttt ttttt tttttttttttttt ttttt");
-
-      // $.alms.popup.error("中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文中文");
-      // $.alms.popup.primary("中文中文中文中文中文中文");
+      // $.alms.popup.warn("ttttttttttt");
+      // $.alms.popup.primary("ttttttttttt");
+      // $.alms.popup.error("ttttttttttt");
+      // $.alms.popup.success("ttttttttttt");
+      // $.alms.popup.info("ttttttttttt");
 
       extValidator.hookFeedback('#input-userId', "Required. Please enter alphanums.");
       extValidator.hookFeedback('#input-password', "Required");
 
       var checkValid = [false, false, false];
 
-      $('#input-userId').on('blur', function(){
-        var userId = $('#input-userId').val();
+      function validateUserId (){
+        var $userId = $('#input-userId');
+        var userId = $userId.val();
 
         if(!userId){
           checkValid[0] = false;
-          extValidator.setInvalid($(this));
+          extValidator.setInvalid($userId);
         }else{
           checkValid[0] = true;
-          extValidator.setValid($(this));
+          extValidator.setValid($userId);
         }
 
         if(!userId.match(/^[0-9a-zA-Z]+$/)){
           checkValid[1] = false;
-          extValidator.setInvalid($(this));
+          extValidator.setInvalid($userId);
         }else{
           checkValid[1] = true;
-          extValidator.setValid($(this));
+          extValidator.setValid($userId);
         }
-      });
+      }
 
-      $('#input-password').on('blur', function(){
-        var password = $('#input-password').val();
+      function validatePassword(){
+        var $password = $('#input-password');
+        var password = $password.val();
         
         if(!password){
           checkValid[2] = false;
-          extValidator.setInvalid($(this));
+          extValidator.setInvalid($password);
         }else{
           checkValid[2] = true;
-          extValidator.setValid($(this));
-        }          
-      });
+          extValidator.setValid($password);
+        }   
+      }
 
+
+      $('#input-userId').on('blur', validateUserId);
+      $('#input-password').on('blur', validatePassword);
       $('#btn-login').on('click', function(e){
+        validateUserId();
+        validatePassword();
+
         if(checkValid.indexOf(false) > -1){
           e.preventDefault();
           e.stopPropagation();

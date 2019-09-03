@@ -2,6 +2,8 @@
   color: $black-hr;
   border: none;
   box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
+  padding-top: 1rem;
+  padding-bottom: .9rem;
 
   &.alert-success{
     background-color: rgba(lighten($new-green, 15%), .9);
@@ -33,6 +35,7 @@
 span[data-notify="message"]{
   display: block;
   text-align: center;
+  // line-height: 14px;
 }
 
 .icon-added{
@@ -40,6 +43,7 @@ span[data-notify="message"]{
     display: block;
     padding-left: 10%;
     text-align: left;
+    // line-height: 14px;
   }
 }
 

@@ -3972,7 +3972,9 @@ img {
 .alert {
   color: #444444;
   border: none;
-  box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15); }
+  box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
+  padding-top: 1rem;
+  padding-bottom: .9rem; }
   .alert.alert-success {
     background-color: rgba(172, 235, 67, 0.9); }
   .alert.alert-danger {
