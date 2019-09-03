@@ -2482,55 +2482,6 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
         font-size: 0.9em;
         line-height: 35px; }
 
-.alert {
-  border: 0;
-  border-radius: 3px;
-  color: #FFFFFF;
-  padding-top: .9rem;
-  padding-bottom: .9rem;
-  position: relative; }
-  .alert.alert-success {
-    background-color: #7ed6a5; }
-  .alert.alert-danger {
-    background-color: #f1926e; }
-  .alert.alert-warning {
-    background-color: #fccf71; }
-  .alert.alert-info {
-    background-color: #66c4de; }
-  .alert.alert-primary {
-    background-color: #65d1d4; }
-  .alert .close {
-    color: #FFFFFF;
-    opacity: .9;
-    text-shadow: none;
-    line-height: 0;
-    outline: 0; }
-    .alert .close i.fa,
-    .alert .close i.nc-icon {
-      font-size: 14px !important; }
-    .alert .close:hover, .alert .close:focus {
-      opacity: 1; }
-  .alert span[data-notify="icon"] {
-    font-size: 27px;
-    display: block;
-    left: 19px;
-    position: absolute;
-    top: 50%;
-    margin-top: -11px; }
-  .alert button.close {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    margin-top: -13px;
-    width: 25px;
-    height: 25px;
-    padding: 3px; }
-  .alert .close ~ span {
-    display: block;
-    max-width: 89%; }
-  .alert.alert-with-icon {
-    padding-left: 65px; }
-
 img {
   max-width: 100%;
   border-radius: 3px; }
@@ -4017,6 +3968,42 @@ img {
   .card-timeline .timeline .timeline-panel {
     width: 38%;
     padding: 15px; } }
+
+.alert {
+  color: #444444;
+  border: none;
+  box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15); }
+  .alert.alert-success {
+    background-color: rgba(172, 235, 67, 0.9); }
+  .alert.alert-danger {
+    background-color: rgba(253, 164, 169, 0.9); }
+  .alert.alert-warning {
+    background-color: rgba(255, 199, 129, 0.9); }
+  .alert.alert-info {
+    background-color: rgba(104, 204, 251, 0.9); }
+  .alert.alert-primary {
+    background-color: rgba(122, 222, 243, 0.9); }
+  .alert button.close {
+    color: #444;
+    text-shadow: none;
+    opacity: 1; }
+
+span[data-notify="message"] {
+  display: block;
+  text-align: center; }
+
+.icon-added ~ span[data-notify="message"] {
+  display: block;
+  padding-left: 10%;
+  text-align: left; }
+
+span[data-notify="icon"].icon-added {
+  font-size: 27px;
+  display: block;
+  left: 4%;
+  position: absolute;
+  top: 46%;
+  margin-top: -11px; }
 
 .sidebar[data-color="darkblue"]:after,
 .off-canvas-sidebar[data-color="darkblue"]:after {

@@ -41,7 +41,7 @@ seq2 = 0, delays2 = 80, durations2 = 500;
 $(document).ready(function() {
 
 	// redirect if not logged in
-	if(!sessionStorage.getItem('token')){
+	if(!window.location.pathname.includes('login.html') && !sessionStorage.getItem('token')){
 		window.location.replace("/_sinopac_root/_ALMS/ALMSWeb/views/login.html");
 	}
 
@@ -190,53 +190,129 @@ $.alms = {
 
 $.alms.popup = {
   defaultSetting: {
+		newest_on_top: true,
     placement: {
-      from: "bottom",
+      from: "top",
       align: "center"
     },
-    offset: {
-      x: 20,
-      y: 500
-		},
 		z_index: 1101,
+		delay: 1000,
+		timer: 5000,
     animate: {
       enter: 'animated zoomIn',
       exit: 'animated fadeOut'
-    }
+		},
+		template: '<div data-notify="container" class="col-xs-12 col-sm-10 col-md-6 col-lg-3 alert alert-{0}" role="alert">' + 
+				'<button type="button" aria-hidden="true" class="close" data-notify="dismiss">&times;</button>' + 
+				'<span data-notify="icon"></span>' + 
+				'<span data-notify="title">{1}</span>' + 
+				'<span data-notify="message">{2}</span>' + 
+				'<a href="{3}" target="{4}" data-notify="url"></a>' +
+			'</div>'
   },
-  success: function(message){
+  success: function(message, icon, maxLength){
+		var theIcon = "icon-added fa fa-check-circle";
+		if(typeof icon == 'string'){
+			theIcon = icon;
+			if(icon && !icon.includes('icon-added')){
+				theIcon += ' icon-added';
+			}
+		}
+
 		var custom = {
 			type: "success"
 		};
-		$.alms.popup.invoke(message, custom);
+		$.alms.popup.invoke(message, theIcon, maxLength, custom);
   },
-  error: function(message){
+  error: function(message, icon, maxLength){
+		var theIcon = "icon-added fa fa-exclamation-triangle";
+		if(typeof icon == 'string'){
+			theIcon = icon;
+			if(icon && !icon.includes('icon-added')){
+				theIcon += ' icon-added';
+			}
+		}
+
 		var custom = {
 			type: "danger"
 		};
-		$.alms.popup.invoke(message, custom);
+		$.alms.popup.invoke(message, theIcon, maxLength, custom);
   },
-  warn: function(message){
+  warn: function(message, icon, maxLength){
+		var theIcon = "icon-added fa fa-exclamation-circle";
+		if(typeof icon == 'string'){
+			theIcon = icon;
+			if(icon && !icon.includes('icon-added')){
+				theIcon += ' icon-added';
+			}
+		}
+		
 		var custom = {
 			type: "warning"
 		};
-		$.alms.popup.invoke(message, custom);
+		$.alms.popup.invoke(message, theIcon, maxLength, custom);
   },
-  info: function(message){
+  info: function(message, icon, maxLength){
+		var theIcon = "icon-added fa fa-info-circle";
+		if(typeof icon == 'string'){
+			theIcon = icon;
+			if(icon && !icon.includes('icon-added')){
+				theIcon += ' icon-added';
+			}
+		}
+
 		var custom = {
 			type: "info"
 		};
-		$.alms.popup.invoke(message, custom);
+		$.alms.popup.invoke(message, theIcon, maxLength, custom);
   },
-  primary: function(message){
+  primary: function(message, icon, maxLength){
+		var theIcon = "";
+		if(typeof icon == 'string'){
+			theIcon = icon;
+			if(icon && !icon.includes('icon-added')){
+				theIcon += ' icon-added';
+			}
+		}
+
 		var custom = {
 			type: "primary"
 		};
-		$.alms.popup.invoke(message, custom);
+		$.alms.popup.invoke(message, theIcon, maxLength, custom);
   },
-  invoke: function(message, customSetting){
-	  var settings = $.extend({}, $.alms.popup.defaultSetting, customSetting);
+  invoke: function(message, icon, maxLength, customSetting){
+
+		function _repose(){
+			var position = {
+				offset: {
+					x: 20,
+					y: 300
+				}
+			};
+			
+			if(screen.height < 900  && screen.height >= 768){
+				position = {
+					offset: {
+						x: 20,
+						y: 360
+					}
+				};
+			}else if(screen.width < 768){
+				position = {
+					offset: {
+						x: 20,
+						y: 20
+					}
+				};
+			}
+
+			return position;
+		}
+
+		var position = _repose(); 
+	  var settings = $.extend({}, $.alms.popup.defaultSetting, position, customSetting);
 	  $.notify({
+			icon: icon,
 			message: message
 	  }, settings);
   }
