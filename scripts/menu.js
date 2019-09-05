@@ -3,7 +3,7 @@ menu = {
 
   hasAccordion: false,
 
-  fetchMenu: function(){
+  fetchMenu: function(activeItemId){
     try{
       $.alms.block();
       var userToken = sessionStorage.getItem('token');
@@ -20,11 +20,12 @@ menu = {
             $.alms.block();
         },
         success: function(data, status, xhr){
-          menu.genMenuDom(data.Data);
+          menu.genMenuDom(data.Data, activeItemId);
             // console.log("apiData:", data, status, xhr);
         },
         error: function(jqXhr, textStatus, errorMessage){
-            console.log("apiFail:", jqXhr, textStatus, errorMessage);
+          $.alms.popup.error("Menu Fetch Fail: " + errorMessage);
+          // console.log("apiFail:", jqXhr, textStatus, errorMessage);
         },
         complete: function(){
             $.alms.unblock();
@@ -33,11 +34,12 @@ menu = {
 
     }catch(err){
       $.alms.unblock();
-      console.log("apiErr:", err);
+      $.alms.popup.error("Menu Fetch Fail: " + err);
+      // console.log("apiErr:", err);
     }
   },
 
-  genMenuDom: function(arrOfObj){
+  genMenuDom: function(arrOfObj, activeItemId){
     if(!arrOfObj.length){
       return;
     }
@@ -62,7 +64,7 @@ menu = {
       newP.innerText = item.Name;
 
       // condition when menu is active
-      if(index === 0){
+      if(item.Id === activeItemId){
         newLi.setAttribute('class', 'active');
       }
 
@@ -73,7 +75,8 @@ menu = {
 
         var subMenuDom = _genSubMenuDom(item.Id, item.Name, item.SubMenu);
       }else{
-        newA.setAttribute('href', item.Url);
+        newA.setAttribute('href', "." + item.Url);
+        // newA.setAttribute('href', item.Url);
       }
 
       newA.appendChild(newI);
@@ -127,4 +130,5 @@ menu = {
     }
 
   }
+
 }
