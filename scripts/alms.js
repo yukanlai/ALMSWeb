@@ -32,16 +32,18 @@ fixedTop = false;
 
 navbar_initialized = false;
 backgroundOrange = false;
-sidebar_mini_active = false;
 toggle_initialized = false;
 
 seq = 0, delays = 80, durations = 500;
 seq2 = 0, delays2 = 80, durations2 = 500;
 
 $(document).ready(function() {
-
-	// redirect if not logged in
+	
+	// Redirect if not logged in
 	if(!window.location.pathname.includes('login.html') && !sessionStorage.getItem('token')){
+		// Store current pathname before redirect to login
+		// window.history.pushState({}, null, window.location.pathname);
+		sessionStorage.setItem('entryPage', window.location.pathname);
 		window.location.replace("/_sinopac_root/_ALMS/ALMSWeb/views/login.html");
 	}
 

@@ -23,13 +23,15 @@ account = {
                     $.alms.block();
                 },
                 success: function(data, status, xhr){
-                    // console.log("apiData:", data, status, xhr);
                     sessionStorage.setItem('token', data.Data.token);
-                    window.location.href = "/_sinopac_root/_ALMS/ALMSWeb/views/menu.html";
+                    if(sessionStorage.getItem('entryPage')){
+                        window.location.replace(sessionStorage.getItem('entryPage'));
+                    }else{
+                        window.location.replace("/_sinopac_root/_ALMS/ALMSWeb/views/index.html");
+                    }
                 },
                 error: function(jqXhr, textStatus, errorMessage){
                     $.alms.popup.error("Login Fail: " + errorMessage);
-                    // console.log("apiFail:", jqXhr, textStatus, errorMessage);
                 },
                 complete: function(){
                     $.alms.unblock();
@@ -38,7 +40,6 @@ account = {
         }catch(err){
             $.alms.unblock();
             $.alms.popup.error("Login Fail: " + err);
-            // console.log("apiErr:", err);
         }
     }
 }
