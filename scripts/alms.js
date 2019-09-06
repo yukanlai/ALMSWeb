@@ -292,14 +292,14 @@ $.alms.popup = {
 				}
 			};
 			
-			if(screen.height < 900  && screen.height >= 768){
+			if($(window).height() < 900  && $(window).height() >= 768){
 				position = {
 					offset: {
 						x: 20,
 						y: 360
 					}
 				};
-			}else if(screen.width < 768){
+			}else if($(window).width() < 768){
 				position = {
 					offset: {
 						x: 20,
