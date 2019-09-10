@@ -1743,7 +1743,7 @@ var XhrHttpClient = /** @class */ (function (_super) {
         return new Promise(function (resolve, reject) {
             var xhr = new XMLHttpRequest();
             xhr.open(request.method, request.url, true);
-            xhr.withCredentials = true;
+            xhr.withCredentials = false;
             xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
             // Explicitly setting the Content-Type header for React Native on Android platform.
             xhr.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
@@ -3757,12 +3757,12 @@ var ServerSentEventsTransport = /** @class */ (function () {
                             }
                             var eventSource;
                             if (typeof window !== "undefined") {
-                                eventSource = new _this.eventSourceConstructor(url, { withCredentials: true });
+                                eventSource = new _this.eventSourceConstructor(url, { withCredentials: false });
                             }
                             else {
                                 // Non-browser passes cookies via the dictionary
                                 var cookies = _this.httpClient.getCookieString(url);
-                                eventSource = new _this.eventSourceConstructor(url, { withCredentials: true, headers: { Cookie: cookies } });
+                                eventSource = new _this.eventSourceConstructor(url, { withCredentials: false, headers: { Cookie: cookies } });
                             }
                             try {
                                 eventSource.onmessage = function (e) {

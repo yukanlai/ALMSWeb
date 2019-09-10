@@ -1,3 +1,19 @@
+
+var connection = new signalR.HubConnectionBuilder()
+.withUrl("https://localhost:5001/serveramount")
+.build();
+
+connection.on("GetServerAmount", function(res){
+  // var result = JSON.parse(res);
+  $('#stats-p-serverAmt').text(res.data);
+});
+
+connection.start()
+.catch(function(err){
+  $.alms.popup.error("SignalR Error: ", err);
+});
+
+
 dashboard = {
   initBarChart: function(labels, data, count){
     var genedColors = Please.make_scheme({
@@ -85,7 +101,7 @@ dashboard = {
     var getInstanceHealth = this.fetchStats("https://localhost:5001/api/Dashboard/health/instance");
 
     getServerAmt.done(function(data){
-      $('#stats-p-serverAmt').text(data.Data);
+      // $('#stats-p-serverAmt').text(data.Data);
     });
 
     getAppAmt.done(function(data){
@@ -113,6 +129,10 @@ dashboard = {
     getInstanceHealth.done(function(){
       
     });
+  },
+
+  updateServerAmount: function(res){
+    $('#stats-p-serverAmt').text(res.Data);
   }
 
 };
