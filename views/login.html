@@ -77,6 +77,7 @@
   <script src="../assets/js/plugins/chartjs.min.js"></script>
   <script src="../assets/js/plugins/bootstrap-notify.min.js"></script>
   <script src="../assets/js/plugins/jquery.blockUI.js"></script>
+  <script src="../assets/js/plugins/jquery-confirm.js"></script>
   <!-- Custom JS extensions -->
   <script src="../scripts/alms.utility.js" type="text/javascript"></script>
   <!-- Project Main JS File -->
@@ -88,12 +89,11 @@
 
   <script>
     $(document).ready(function(){
-      // $.alms.popup.warn("ttttttttttt");
-      // $.alms.popup.primary("ttttttttttt");
-      // $.alms.popup.error("ttttttttttt");
-      // $.alms.popup.success("ttttttttttt");
-      // $.alms.popup.info("ttttttttttt");
 
+      $.alms.popup.alert.error("測試測試測試測試測試測試測試");
+      $.alms.popup.alert.error("測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試");
+      $.alms.popup.alert.warn("測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試");
+      
       extValidator.hookFeedback('#input-userId', "Required. Please enter alphanums.");
       extValidator.hookFeedback('#input-password', "Required");
 

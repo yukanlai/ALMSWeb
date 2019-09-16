@@ -1,8 +1,10 @@
 @import 'project/font-montserrat';
 @import './paper-dashboard.scss';
+@import './project/plugins/plugin-jquery-confirm';
 
 @import "project/variables";
 @import "project/notify";
+@import "project/jq-confirm";
 @import "project/foldable-menu";
 @import "project/navbar";
 @import "project/full-page";

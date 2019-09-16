@@ -10,7 +10,7 @@ connection.on("GetServerAmount", function(res){
 
 connection.start()
 .catch(function(err){
-  $.alms.popup.error("SignalR Error: ", err);
+  $.alms.popup.notify.error("SignalR Error: ", err);
 });
 
 

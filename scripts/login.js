@@ -3,7 +3,7 @@ account = {
         try{
             if(!user && !password){
                 // validation 
-                $alms.popup.error("ID or Password input error");
+                $alms.popup.notify.error("ID or Password input error");
                 return;
             }
 
@@ -31,7 +31,7 @@ account = {
                     }
                 },
                 error: function(jqXhr, textStatus, errorMessage){
-                    $.alms.popup.error("Login Fail: " + errorMessage);
+                    $.alms.popup.notify.error("Login Fail: " + errorMessage);
                 },
                 complete: function(){
                     $.alms.unblock();
@@ -39,7 +39,7 @@ account = {
             });
         }catch(err){
             $.alms.unblock();
-            $.alms.popup.error("Login Fail: " + err);
+            $.alms.popup.notify.error("Login Fail: " + err);
         }
     }
 }

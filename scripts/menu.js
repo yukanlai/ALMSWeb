@@ -24,7 +24,7 @@ menu = {
             // console.log("apiData:", data, status, xhr);
         },
         error: function(jqXhr, textStatus, errorMessage){
-          $.alms.popup.error("Menu Fetch Fail: " + errorMessage);
+          $.alms.popup.notify.error("Menu Fetch Fail: " + errorMessage);
           // console.log("apiFail:", jqXhr, textStatus, errorMessage);
         },
         complete: function(){
@@ -34,7 +34,7 @@ menu = {
 
     }catch(err){
       $.alms.unblock();
-      $.alms.popup.error("Menu Fetch Fail: " + err);
+      $.alms.popup.notify.error("Menu Fetch Fail: " + err);
       // console.log("apiErr:", err);
     }
   },

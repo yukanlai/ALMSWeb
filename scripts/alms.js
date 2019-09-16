@@ -190,7 +190,174 @@ $.alms = {
 };
 
 
-$.alms.popup = {
+$.alms.popup = {};
+$.alms.popup.alert = {
+	success: function(message, icon){
+		var theIcon = "icon-added fa fa-check-circle";
+		if(typeof icon == 'string'){
+			theIcon = icon;
+			if(icon && !icon.includes('icon-added')){
+				theIcon += ' icon-added';
+			}
+		}
+		
+		$.alms.popup.alert.invoke(message, theIcon, "success");
+	},
+	error: function(message, icon){
+		var theIcon = "icon-added fa fa-exclamation-triangle";
+		if(typeof icon == 'string'){
+			theIcon = icon;
+			if(icon && !icon.includes('icon-added')){
+				theIcon += ' icon-added';
+			}
+		}
+		
+		$.alms.popup.alert.invoke(message, theIcon, "danger");
+	},
+	warn: function(message, icon){
+		var theIcon = "icon-added fa fa-exclamation-circle";
+		if(typeof icon == 'string'){
+			theIcon = icon;
+			if(icon && !icon.includes('icon-added')){
+				theIcon += ' icon-added';
+			}
+		}
+		
+		$.alms.popup.alert.invoke(message, theIcon, "warning");
+	},
+	info: function(message, icon){
+		var theIcon = "icon-added fa fa-exclamation-circle";
+		if(typeof icon == 'string'){
+			theIcon = icon;
+			if(icon && !icon.includes('icon-added')){
+				theIcon += ' icon-added';
+			}
+		}
+		
+		$.alms.popup.alert.invoke(message, theIcon, "info");
+	},
+	primary: function(message, icon){
+		var theIcon = "";
+		if(typeof icon == 'string'){
+			theIcon = icon;
+			if(icon && !icon.includes('icon-added')){
+				theIcon += ' icon-added';
+			}
+		}
+
+		$.alms.popup.alert.invoke(message, theIcon, "primary");
+	},
+	invoke: function(message, icon, type){
+		$.confirm({
+			icon: icon,
+			title: false,
+			content: message,
+			type: type,
+			buttons: false,
+			theme: 'alert',
+			bgOpacity: 0,
+			closeIcon: function(){},
+			columnClass: 'col-xs-12 col-sm-10 col-md-6 col-lg-5'
+		});
+	}
+};
+
+$.alms.popup.dialog = {
+	confirm: function(title, msg, icon, btnName, btnType, callback){
+		var options = {
+			theme: 'material',
+		};
+		options.buttons = {};
+		options.buttons.confirm = {};
+
+		if(typeof title === "string"){
+			options.title = title;
+		}else{
+			options.title = "Confirm!";
+		}
+
+		if(typeof msg === "string"){
+			options.content = msg;
+		}else{
+			options.content = "";
+		}
+
+		if(typeof icon === "string"){
+			options.icon = icon;
+		}else{
+			options.icon = "fa fa-exclamation-circle";
+		}
+
+		if(typeof btnName === "string"){
+			options.buttons.confirm.text = btnName;
+		}else{
+			options.buttons.confirm.text = "OK";
+		}
+
+		if(typeof btnType === "string"){
+			options.buttons.confirm.btnClass = "btn btn-" + btnType;
+		}else{
+			options.buttons.confirm.btnClass = "btn btn-info";
+		}
+
+		if(typeof callback === "function"){
+			options.buttons.confirm.action = callback;
+		}
+
+		$.confirm(options);
+	},
+
+	display: function(title, msg, icon, confirmBtnName, cancelBtnName, confirmFunc, cancelFunc){
+		var options = {
+			theme: 'material',
+		};
+		options.buttons = {};
+		options.buttons.confirm = {};
+		options.buttons.cancel = {};
+		if(typeof title === "string"){
+			options.title = title;
+		}else{
+			options.title = "Confirm!";
+		}
+
+		if(typeof msg === "string"){
+			options.content = msg;
+		}else{
+			options.content = "";
+		}
+
+		if(typeof icon === "string"){
+			options.icon = icon;
+		}else{
+			options.icon = "fa fa-exclamation-circle";
+		}
+
+		if(typeof cancelBtnName === "string"){
+			options.buttons.cancel.text = cancelBtnName;
+		}else{
+			options.buttons.cancel.text = "Cancel";
+		}
+
+		if(typeof cancelFunc === "function"){
+			options.buttons.cancel.action = cancelFunc;
+		}
+
+		options.buttons.confirm.btnClass = "btn btn-success";
+		if(typeof confirmBtnName === "string"){
+			options.buttons.confirm.text = confirmBtnName;
+		}else{
+			options.buttons.confirm.text = "Confirm";
+		}
+
+		if(typeof confirmFunc === "function"){
+			options.buttons.confirm.action = confirmFunc;
+		}
+
+		$.confirm(options);
+	}
+};
+
+$.alms.popup.notify = {
   defaultSetting: {
 		newest_on_top: true,
     placement: {
@@ -199,7 +366,7 @@ $.alms.popup = {
     },
 		z_index: 1101,
 		delay: 1000,
-		timer: 5000,
+		timer: 500000,
     animate: {
       enter: 'animated zoomIn',
       exit: 'animated fadeOut'
@@ -212,7 +379,7 @@ $.alms.popup = {
 				'<a href="{3}" target="{4}" data-notify="url"></a>' +
 			'</div>'
   },
-  success: function(message, icon, maxLength){
+  success: function(message, icon){
 		var theIcon = "icon-added fa fa-check-circle";
 		if(typeof icon == 'string'){
 			theIcon = icon;
@@ -224,9 +391,9 @@ $.alms.popup = {
 		var custom = {
 			type: "success"
 		};
-		$.alms.popup.invoke(message, theIcon, maxLength, custom);
+		$.alms.popup.notify.invoke(message, theIcon, custom);
   },
-  error: function(message, icon, maxLength){
+  error: function(message, icon){
 		var theIcon = "icon-added fa fa-exclamation-triangle";
 		if(typeof icon == 'string'){
 			theIcon = icon;
@@ -238,9 +405,9 @@ $.alms.popup = {
 		var custom = {
 			type: "danger"
 		};
-		$.alms.popup.invoke(message, theIcon, maxLength, custom);
+		$.alms.popup.notify.invoke(message, theIcon, custom);
   },
-  warn: function(message, icon, maxLength){
+  warn: function(message, icon){
 		var theIcon = "icon-added fa fa-exclamation-circle";
 		if(typeof icon == 'string'){
 			theIcon = icon;
@@ -252,9 +419,9 @@ $.alms.popup = {
 		var custom = {
 			type: "warning"
 		};
-		$.alms.popup.invoke(message, theIcon, maxLength, custom);
+		$.alms.popup.notify.invoke(message, theIcon, custom);
   },
-  info: function(message, icon, maxLength){
+  info: function(message, icon){
 		var theIcon = "icon-added fa fa-info-circle";
 		if(typeof icon == 'string'){
 			theIcon = icon;
@@ -266,9 +433,9 @@ $.alms.popup = {
 		var custom = {
 			type: "info"
 		};
-		$.alms.popup.invoke(message, theIcon, maxLength, custom);
+		$.alms.popup.notify.invoke(message, theIcon, custom);
   },
-  primary: function(message, icon, maxLength){
+  primary: function(message, icon){
 		var theIcon = "";
 		if(typeof icon == 'string'){
 			theIcon = icon;
@@ -280,9 +447,9 @@ $.alms.popup = {
 		var custom = {
 			type: "primary"
 		};
-		$.alms.popup.invoke(message, theIcon, maxLength, custom);
+		$.alms.popup.notify.invoke(message, theIcon, custom);
   },
-  invoke: function(message, icon, maxLength, customSetting){
+  invoke: function(message, icon, customSetting){
 
 		function _repose(){
 			var position = {
@@ -312,10 +479,11 @@ $.alms.popup = {
 		}
 
 		var position = _repose(); 
-	  var settings = $.extend({}, $.alms.popup.defaultSetting, position, customSetting);
+	  var settings = $.extend({}, $.alms.popup.notify.defaultSetting, position, customSetting);
 	  $.notify({
 			icon: icon,
 			message: message
-	  }, settings);
-  }
+		}, settings);
+		
+	}
 };

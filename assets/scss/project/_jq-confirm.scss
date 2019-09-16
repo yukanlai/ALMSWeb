@@ -1,0 +1,71 @@
+.jconfirm.jconfirm-material .jconfirm-bg {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.jconfirm-alert{
+  // background-color: none;
+
+  .jconfirm-box{
+    color: $black-hr;
+    border: none;
+    box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
+    padding-top: 1rem;
+    padding-bottom: .9rem;
+  }
+}
+
+.jconfirm-box.jconfirm-type-success{
+  background-color: rgba(lighten($new-green, 15%), .9);
+}
+.jconfirm-box.jconfirm-type-danger{
+  background-color: rgba(lighten($new-red, 20%), .9);
+}
+.jconfirm-box.jconfirm-type-warning{
+  background-color: rgba(lighten($new-orange, 15%), .9);
+}
+.jconfirm-box.jconfirm-type-info{
+  background-color: rgba(lighten($new-green-blue, 20%), .9);
+}
+.jconfirm-box.jconfirm-type-primary{
+  background-color: rgba(lighten($new-blue, 20%), .9);
+}
+
+.jconfirm-type-success,
+.jconfirm-type-danger,
+.jconfirm-type-warning,
+.jconfirm-type-info,
+.jconfirm-type-primary{
+  &.jconfirm-box{
+    padding: 15px 26px 15px 15px;
+  }
+
+  .jconfirm-closeIcon{
+    height: 14px;
+  }
+  
+  .jconfirm-icon-c{
+    display: block;
+    position: absolute;
+    left: 4%;
+    top: calc(50% - 14px);
+  
+    .icon-added{
+      font-size: 27px;
+    }
+  }
+  
+  & .jconfirm-title-c{
+    padding-bottom: 0 !important;
+  }
+  
+  & .jconfirm-content-pane{
+    display: block !important;
+    margin-bottom: 0 !important;
+  }
+  
+  .jconfirm-title-c, .jconfirm-content-pane{
+    display: block;
+    padding-left: 11%;
+    text-align: left;
+  }
+}
