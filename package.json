@@ -8,7 +8,7 @@
   "devDependencies": {},
   "dependencies": {
     "chart.js": "^2.8.0",
-    "node-sass": "^4.12.0"
+    "node-sass": "^7.0.0"
   },
   "scripts": {
     "scss-live": "node-sass -w",
